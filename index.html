@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ClaimSite — A note from Trevor at Flatirons Creative Studio</title>
+  <meta name="description" content="If you received a postcard with a QR code, this is the place to verify it's real. Built by Trevor Cusworth in Boulder, Colorado." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600..900;9..144,400..900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #FAF6EE; --cream-deep: #F2EBDC;
+      --ink: #1A2A3A; --ink-soft: #3D4F62;
+      --copper: #C8754A; --copper-deep: #A85F38;
+      --rule: rgba(26, 42, 58, 0.18);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--cream); color: var(--ink); font-family: 'EB Garamond', Georgia, serif; font-size: 19px; line-height: 1.6; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    body { background-image: radial-gradient(ellipse at top left, rgba(200, 117, 74, 0.04) 0%, transparent 60%), radial-gradient(ellipse at bottom right, rgba(26, 42, 58, 0.03) 0%, transparent 50%); min-height: 100vh; }
+    body::before { content: ''; position: fixed; inset: 0; pointer-events: none; opacity: 0.4; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.3 0 0 0 0 0.2 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); z-index: 1; }
+    .stripe { height: 6px; background: var(--copper); position: relative; z-index: 2; }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 64px 32px 96px; position: relative; z-index: 2; }
+    .masthead { display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 24px; border-bottom: 1px solid var(--rule); margin-bottom: 64px; gap: 24px; flex-wrap: wrap; }
+    .brand { font-family: 'Fraunces', Georgia, serif; font-variation-settings: 'opsz' 144, 'SOFT' 50, 'wght' 600; font-size: 28px; letter-spacing: -0.01em; color: var(--ink); }
+    .brand em { font-style: italic; font-variation-settings: 'opsz' 144, 'SOFT' 100, 'wght' 500; color: var(--copper-deep); }
+    .meta { font-family: 'Fraunces', Georgia, serif; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); font-variation-settings: 'opsz' 14, 'wght' 500; }
+    .hero { margin-bottom: 80px; animation: fadeUp 0.9s ease-out 0.1s both; }
+    .eyebrow { font-family: 'Fraunces', Georgia, serif; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--copper-deep); font-variation-settings: 'opsz' 14, 'wght' 600; margin-bottom: 24px; }
+    h1 { font-family: 'Fraunces', Georgia, serif; font-variation-settings: 'opsz' 144, 'SOFT' 30, 'wght' 500; font-size: clamp(40px, 6vw, 64px); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 32px; color: var(--ink); }
+    h1 em { font-style: italic; font-variation-settings: 'opsz' 144, 'SOFT' 100, 'wght' 400; color: var(--copper-deep); }
+    .lede { font-size: 22px; line-height: 1.5; color: var(--ink-soft); max-width: 580px; margin: 0; }
+    .letter { margin: 64px 0; padding: 40px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); animation: fadeUp 0.9s ease-out 0.3s both; }
+    .letter p { margin: 0 0 20px; max-width: 620px; }
+    .letter p:last-child { margin-bottom: 0; }
+    .letter strong { font-weight: 500; color: var(--ink); background: linear-gradient(transparent 60%, rgba(200, 117, 74, 0.18) 60%); padding: 0 2px; }
+    .founder { display: grid; grid-template-columns: 120px 1fr; gap: 28px; align-items: center; margin: 48px 0; animation: fadeUp 0.9s ease-out 0.5s both; }
+    .founder-photo { width: 120px; height: 120px; border-radius: 4px; background: linear-gradient(135deg, #D4B896 0%, #B89B7A 100%); position: relative; overflow: hidden; box-shadow: 0 1px 0 rgba(255,255,255,0.4) inset, 0 8px 24px -8px rgba(26, 42, 58, 0.25); }
+    .founder-photo::after { content: 'TC'; position: absolute; inset: 0; display: grid; place-items: center; font-family: 'Fraunces', Georgia, serif; font-variation-settings: 'opsz' 144, 'wght' 500; font-size: 44px; color: rgba(26, 42, 58, 0.35); letter-spacing: -0.02em; }
+    .founder-info .name { font-family: 'Fraunces', Georgia, serif; font-variation-settings: 'opsz' 24, 'wght' 600; font-size: 22px; margin: 0 0 4px; color: var(--ink); }
+    .founder-info .title { font-style: italic; color: var(--ink-soft); margin: 0 0 12px; font-size: 17px; }
+    .founder-info .links { font-size: 15px; color: var(--ink-soft); }
+    .founder-info .links a { color: var(--copper-deep); text-decoration: none; border-bottom: 1px solid rgba(200, 117, 74, 0.3); transition: border-color 0.2s; }
+    .founder-info .links a:hover { border-bottom-color: var(--copper-deep); }
+    .cta-section { margin: 80px 0 48px; padding: 48px 40px; background: var(--cream-deep); border-radius: 6px; position: relative; animation: fadeUp 0.9s ease-out 0.7s both; }
+    .cta-section::before { content: ''; position: absolute; top: 0; left: 40px; right: 40px; height: 3px; background: var(--copper); }
+    .cta-section h2 { font-family: 'Fraunces', Georgia, serif; font-variation-settings: 'opsz' 144, 'wght' 600; font-size: 28px; margin: 0 0 12px; letter-spacing: -0.015em; }
+    .cta-section p { margin: 0 0 24px; color: var(--ink-soft); font-size: 17px; }
+    .button { display: inline-flex; align-items: center; gap: 12px; padding: 14px 28px; background: var(--ink); color: var(--cream); text-decoration: none; border-radius: 4px; font-family: 'Fraunces', Georgia, serif; font-variation-settings: 'opsz' 14, 'wght' 500; font-size: 16px; letter-spacing: 0.01em; transition: all 0.25s ease; border: none; cursor: pointer; }
+    .button:hover { background: var(--copper-deep); transform: translateY(-1px); box-shadow: 0 8px 20px -8px rgba(26, 42, 58, 0.3); }
+    .button .arrow { transition: transform 0.25s ease; }
+    .button:hover .arrow { transform: translateX(3px); }
+    .points { display: grid; grid-template-columns: 1fr; gap: 32px; margin: 80px 0; animation: fadeUp 0.9s ease-out 0.5s both; }
+    @media (min-width: 640px) { .points { grid-template-columns: repeat(3, 1fr); gap: 40px; } }
+    .point { position: relative; padding-top: 24px; border-top: 1px solid var(--rule); }
+    .point .num { font-family: 'Fraunces', Georgia, serif; font-variation-settings: 'opsz' 144, 'wght' 400; font-style: italic; font-size: 48px; color: var(--copper); line-height: 1; margin-bottom: 8px; letter-spacing: -0.02em; }
+    .point h3 { font-family: 'Fraunces', Georgia, serif; font-variation-settings: 'opsz' 24, 'wght' 600; font-size: 19px; margin: 0 0 8px; letter-spacing: -0.01em; }
+    .point p { margin: 0; font-size: 16px; color: var(--ink-soft); line-height: 1.55; }
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-size: 14px; color: var(--ink-soft); }
+    footer .address { font-style: italic; }
+    footer .links a { color: var(--ink-soft); text-decoration: none; margin-left: 24px; border-bottom: 1px solid transparent; transition: border-color 0.2s, color 0.2s; }
+    footer .links a:first-child { margin-left: 0; }
+    footer .links a:hover { color: var(--copper-deep); border-bottom-color: var(--copper-deep); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    ::selection { background: var(--copper); color: var(--cream); }
+    @media (max-width: 600px) {
+      .wrap { padding: 48px 24px 64px; }
+      .masthead { margin-bottom: 48px; }
+      .hero { margin-bottom: 56px; }
+      .founder { grid-template-columns: 88px 1fr; gap: 20px; }
+      .founder-photo { width: 88px; height: 88px; }
+      .founder-photo::after { font-size: 32px; }
+      .cta-section { padding: 32px 24px; }
+      .lede { font-size: 19px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stripe"></div>
+  <div class="wrap">
+    <header class="masthead">
+      <div class="brand">Claim<em>Site</em></div>
+      <div class="meta">A Flatirons Creative Studio Project · Boulder, CO</div>
+    </header>
+    <section class="hero">
+      <div class="eyebrow">If you received a postcard from us</div>
+      <h1>Yes, that postcard <em>is</em> real.</h1>
+      <p class="lede">It came from a small studio in Boulder, Colorado — not a call center, not an offshore agency. Here's what it is, and who built it for you.</p>
+    </section>
+    <section class="letter">
+      <p>You probably got a postcard with a QR code and a handwritten note. Maybe it caught your eye. Maybe it set off your scam alarm. Both reactions are reasonable.</p>
+      <p>Here's what's going on: I noticed your business shows up in Google Maps, but doesn't have a website (or has one that's been neglected). So I <strong>built you a sample site</strong> — designed for your business, with your name, your services, your reviews. The QR code on the postcard takes you to that demo.</p>
+      <p>You can look at it, ignore it, or claim it. There's no obligation, no follow-up call, no pressure. If you like what I built, the postcard explains how to make it yours.</p>
+    </section>
+    <aside class="founder">
+      <div class="founder-photo" aria-label="Trevor Cusworth"></div>
+      <div class="founder-info">
+        <p class="name">Trevor Cusworth</p>
+        <p class="title">Founder, Flatirons Creative Studio</p>
+        <p class="links">
+          <a href="https://www.linkedin.com/in/trevorcusworth" target="_blank" rel="noopener">LinkedIn</a>
+          &nbsp;·&nbsp;
+          <a href="mailto:tcusworth@fcstudio.us">tcusworth@fcstudio.us</a>
+        </p>
+      </div>
+    </aside>
+    <section class="cta-section">
+      <h2>Lost the postcard?</h2>
+      <p>If you remember roughly what your demo site looked like, or your business name, you can find it again.</p>
+      <a href="/claim" class="button">Find your demo site <span class="arrow">→</span></a>
+    </section>
+    <section class="points">
+      <div class="point"><div class="num">i.</div><h3>One studio, one founder</h3><p>I run Flatirons Creative Studio out of Boulder. No team, no investors, no sales floor.</p></div>
+      <div class="point"><div class="num">ii.</div><h3>Custom-built, not templated</h3><p>Each demo site is generated specifically for one business, using the listing details you've already published.</p></div>
+      <div class="point"><div class="num">iii.</div><h3>You're not on a list</h3><p>I don't sell your information. I don't pass it on. I built one site, mailed one postcard, that's it.</p></div>
+    </section>
+    <footer>
+      <div class="address">Boulder, Colorado · est. 2025</div>
+      <div class="links">
+        <a href="https://fcstudio.us" target="_blank" rel="noopener">Flatirons Creative Studio</a>
+        <a href="mailto:tcusworth@fcstudio.us">Contact</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

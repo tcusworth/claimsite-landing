@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Find your demo site — ClaimSite</title>
+  <meta name="description" content="Look up the demo site we built for your business." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600..900;9..144,400..900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #FAF6EE; --cream-deep: #F2EBDC;
+      --ink: #1A2A3A; --ink-soft: #3D4F62;
+      --copper: #C8754A; --copper-deep: #A85F38;
+      --rule: rgba(26, 42, 58, 0.18);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--cream); color: var(--ink); font-family: 'EB Garamond', Georgia, serif; font-size: 19px; line-height: 1.6; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    body { background-image: radial-gradient(ellipse at top left, rgba(200, 117, 74, 0.04) 0%, transparent 60%), radial-gradient(ellipse at bottom right, rgba(26, 42, 58, 0.03) 0%, transparent 50%); min-height: 100vh; }
+    body::before { content: ''; position: fixed; inset: 0; pointer-events: none; opacity: 0.4; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.3 0 0 0 0 0.2 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); z-index: 1; }
+    .stripe { height: 6px; background: var(--copper); position: relative; z-index: 2; }
+    .wrap { max-width: 640px; margin: 0 auto; padding: 64px 32px 96px; position: relative; z-index: 2; }
+    .back { display: inline-flex; align-items: center; gap: 8px; font-family: 'Fraunces', Georgia, serif; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; font-variation-settings: 'opsz' 14, 'wght' 500; margin-bottom: 48px; transition: color 0.2s; }
+    .back:hover { color: var(--copper-deep); }
+    .back .arrow { transition: transform 0.2s; display: inline-block; }
+    .back:hover .arrow { transform: translateX(-3px); }
+    .hero { margin-bottom: 56px; animation: fadeUp 0.7s ease-out 0.05s both; }
+    .eyebrow { font-family: 'Fraunces', Georgia, serif; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--copper-deep); font-variation-settings: 'opsz' 14, 'wght' 600; margin-bottom: 20px; }
+    h1 { font-family: 'Fraunces', Georgia, serif; font-variation-settings: 'opsz' 144, 'SOFT' 30, 'wght' 500; font-size: clamp(36px, 5vw, 52px); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 24px; }
+    h1 em { font-style: italic; font-variation-settings: 'opsz' 144, 'SOFT' 100, 'wght' 400; color: var(--copper-deep); }
+    .lede { font-size: 19px; line-height: 1.5; color: var(--ink-soft); margin: 0; max-width: 540px; }
+    .search { margin: 56px 0; animation: fadeUp 0.7s ease-out 0.2s both; }
+    .field-label { display: block; font-family: 'Fraunces', Georgia, serif; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); font-variation-settings: 'opsz' 14, 'wght' 500; margin-bottom: 12px; }
+    .field { display: flex; gap: 0; align-items: stretch; border-radius: 4px; overflow: hidden; box-shadow: 0 0 0 1px var(--rule); transition: box-shadow 0.2s; background: var(--cream); }
+    .field:focus-within { box-shadow: 0 0 0 2px var(--copper); }
+    .field input { flex: 1; border: none; padding: 18px 20px; font-family: 'EB Garamond', Georgia, serif; font-size: 19px; background: transparent; color: var(--ink); outline: none; }
+    .field input::placeholder { color: rgba(26, 42, 58, 0.4); font-style: italic; }
+    .field button { border: none; background: var(--ink); color: var(--cream); padding: 0 28px; font-family: 'Fraunces', Georgia, serif; font-variation-settings: 'opsz' 14, 'wght' 500; font-size: 16px; letter-spacing: 0.01em; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; gap: 10px; }
+    .field button:hover { background: var(--copper-deep); }
+    .field button .arrow { transition: transform 0.2s; }
+    .field button:hover .arrow { transform: translateX(3px); }
+    .hint { margin-top: 12px; font-size: 14px; color: var(--ink-soft); font-style: italic; }
+    .results { margin-top: 32px; min-height: 60px; }
+    .results-label { font-family: 'Fraunces', Georgia, serif; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); font-variation-settings: 'opsz' 14, 'wght' 500; margin-bottom: 16px; }
+    .result-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+    .result-item { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid var(--rule); gap: 16px; cursor: pointer; transition: padding 0.2s; text-decoration: none; color: inherit; }
+    .result-item:hover { padding-left: 12px; }
+    .result-info .biz { font-family: 'Fraunces', Georgia, serif; font-variation-settings: 'opsz' 24, 'wght' 600; font-size: 19px; color: var(--ink); letter-spacing: -0.01em; }
+    .result-info .loc { font-size: 15px; color: var(--ink-soft); font-style: italic; margin-top: 2px; }
+    .result-go { color: var(--copper-deep); font-family: 'Fraunces', Georgia, serif; font-variation-settings: 'opsz' 14, 'wght' 500; font-size: 15px; letter-spacing: 0.01em; flex-shrink: 0; }
+    .state { padding: 24px 0; color: var(--ink-soft); font-style: italic; }
+    .state.empty { padding: 48px 0; text-align: center; border-top: 1px solid var(--rule); }
+    .state.empty .icon { font-family: 'Fraunces', Georgia, serif; font-variation-settings: 'opsz' 144, 'wght' 400; font-style: italic; font-size: 48px; color: var(--copper); margin-bottom: 12px; }
+    .state.empty h3 { font-family: 'Fraunces', Georgia, serif; font-variation-settings: 'opsz' 24, 'wght' 600; color: var(--ink); font-size: 19px; margin: 0 0 8px; font-style: normal; }
+    .state.empty p { margin: 0; max-width: 380px; margin: 0 auto; font-style: normal; font-size: 16px; }
+    .state.empty a { color: var(--copper-deep); text-decoration: none; border-bottom: 1px solid rgba(200, 117, 74, 0.3); }
+    .help { margin-top: 80px; padding-top: 32px; border-top: 1px solid var(--rule); animation: fadeUp 0.7s ease-out 0.4s both; }
+    .help h3 { font-family: 'Fraunces', Georgia, serif; font-variation-settings: 'opsz' 24, 'wght' 600; font-size: 17px; margin: 0 0 8px; color: var(--ink); }
+    .help p { margin: 0; font-size: 16px; color: var(--ink-soft); }
+    .help a { color: var(--copper-deep); text-decoration: none; border-bottom: 1px solid rgba(200, 117, 74, 0.3); }
+    footer { margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--rule); font-size: 13px; color: var(--ink-soft); font-style: italic; text-align: center; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    ::selection { background: var(--copper); color: var(--cream); }
+    @media (max-width: 600px) {
+      .wrap { padding: 40px 24px 64px; }
+      .field input { font-size: 17px; padding: 16px; }
+      .field button { padding: 0 18px; font-size: 14px; }
+      .field button span:not(.arrow) { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stripe"></div>
+  <div class="wrap">
+    <a href="/" class="back"><span class="arrow">←</span> Back</a>
+    <section class="hero">
+      <div class="eyebrow">Demo site lookup</div>
+      <h1>Find your <em>demo</em>.</h1>
+      <p class="lede">Type your business name, or part of it. We'll match you to the demo site we built.</p>
+    </section>
+    <section class="search">
+      <label for="q" class="field-label">Business name</label>
+      <div class="field">
+        <input id="q" type="text" placeholder="e.g. Rainbow Electric" autocomplete="off" autofocus />
+        <button id="go" type="button"><span>Find</span><span class="arrow">→</span></button>
+      </div>
+      <p class="hint">Search starts as you type — three letters or more.</p>
+      <div class="results" id="results"></div>
+    </section>
+    <section class="help">
+      <h3>Can't find it?</h3>
+      <p>Email <a href="mailto:tcusworth@fcstudio.us">tcusworth@fcstudio.us</a> with your business name and city. I'll send you the link directly.</p>
+    </section>
+    <footer>Flatirons Creative Studio · Boulder, Colorado</footer>
+  </div>
+  <script>
+    const API_BASE = 'https://app.claimsite.app';
+    const SITES_BASE = 'https://sites.claimsite.app';
+    const $q = document.getElementById('q');
+    const $go = document.getElementById('go');
+    const $results = document.getElementById('results');
+    let debounceTimer = null;
+    let inflight = null;
+
+    async function search(query) {
+      const q = query.trim();
+      if (q.length < 3) { $results.innerHTML = ''; return; }
+      if (inflight) inflight.abort();
+      inflight = new AbortController();
+      try {
+        const res = await fetch(`${API_BASE}/api/claim/lookup?q=${encodeURIComponent(q)}`, { signal: inflight.signal });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        render(data.matches || [], q);
+      } catch (e) {
+        if (e.name === 'AbortError') return;
+        $results.innerHTML = `<div class="state empty"><div class="icon">?</div><h3>Connection problem</h3><p>Please try again, or <a href="mailto:tcusworth@fcstudio.us">email me directly</a>.</p></div>`;
+      }
+    }
+
+    function render(matches, q) {
+      if (matches.length === 0) {
+        $results.innerHTML = `<div class="state empty"><div class="icon">?</div><h3>No match for "${escapeHtml(q)}"</h3><p>Try a shorter version, or <a href="mailto:tcusworth@fcstudio.us?subject=Help%20finding%20my%20demo%20site">email me directly</a> with your business name and city.</p></div>`;
+        return;
+      }
+      const items = matches.map(m => `<a href="${SITES_BASE}/${m.slug}/" class="result-item"><div class="result-info"><div class="biz">${escapeHtml(m.name || m.business_name || m.slug)}</div><div class="loc">${escapeHtml([m.city, m.state].filter(Boolean).join(', '))}</div></div><div class="result-go">View →</div></a>`).join('');
+      $results.innerHTML = `<div class="results-label">${matches.length === 1 ? '1 match' : matches.length + ' matches'}</div><div class="result-list">${items}</div>`;
+    }
+
+    function escapeHtml(s) {
+      return String(s || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    }
+
+    $q.addEventListener('input', (e) => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => search(e.target.value), 200);
+    });
+    $go.addEventListener('click', () => search($q.value));
+    $q.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') { e.preventDefault(); search($q.value); }
+    });
+  </script>
+</body>
+</html>
